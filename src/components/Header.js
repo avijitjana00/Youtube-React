@@ -1,38 +1,23 @@
-import { LOGO_URL } from "../utils/constants";
-import { useState, useContext } from "react";
-import { Link} from "react-router-dom";
-import useInternetStatus from "../utils/useInternetStatus";
-import UserContext from "../utils/UserContext";
-import { useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
+import { toggleMenu } from "../Utils/appSlice";
 
 const Header = ()=>{
-    const [loginBtn, setLoginBtn] = useState("Login");
-    const onlineStatus = useInternetStatus();
-    const { loggedInUser } = useContext(UserContext);
-
-    const cartItems = useSelector((store)=> store.cart.items)
-
-    return(
-        <div className = "flex justify-between bg-amber-200 shadow-lg">
-            <div className = "flex items-center">
-                <img className = "logo w-32 h-30" src = {LOGO_URL}></img>
+    const dispatch = useDispatch();
+    const handleToggleMenu = ()=>{
+        dispatch(toggleMenu());
+    }
+    return (
+        <div className="grid grid-flow-col p-5 m-2 shadow-lg">
+            <div className="flex col-span-1">
+                <img onClick={()=>handleToggleMenu()} className="h-12 cursor-pointer" alt="menu" src="https://static.vecteezy.com/system/resources/previews/021/190/402/non_2x/hamburger-menu-filled-icon-in-transparent-background-basic-app-and-web-ui-bold-line-icon-eps10-free-vector.jpg" />
+                <img className="h-12 mx-2" alt="youtube-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ8dMUN-33agcSX_sI9qWZWfb7-ZPiqGbLSg&s" />
             </div>
-            <div className = "flex items-center px-5">
-                <ul className="flex space-x-4">
-                    <li>Online Status {onlineStatus ? "🟢" : "🔴"}</li>
-                    <li> <Link to="/">Home</Link></li>
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/contact">Contact Us</Link></li>
-                    <li><Link to="/grocery">Grocery</Link></li>
-                    <li><Link to="/cart">Cart({cartItems.length})</Link></li>
-                    <li>
-                        <button className="login-btn" onClick={() => setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")}>
-                            {loginBtn}
-                        </button>
-                    </li>
-                    <li className="font-bold">{loggedInUser}</li>
-                </ul>
-
+            <div className="col-span-10">
+                <input className="px-5 border border-gray-400 rounded-l-full w-1/2 p-2" type="text" placeholder="Search" />
+                <button className="border border-gray-400 p-2 rounded-r-full bg-slate-100">🔍</button>
+            </div>
+            <div className="col-span-1">
+                <img className="h-10" alt="user-icon" src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
             </div>
         </div>
     )
