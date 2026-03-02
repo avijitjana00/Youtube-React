@@ -1,5 +1,4 @@
 const VideoCard = ({info})=>{
-    console.log(info);
     const {snippet, statistics} = info;
     return(
         <div className="p-2 m-2 w-72 shadow-lg">
