@@ -63,7 +63,7 @@ const Header = ()=>{
                     </div>
                 }
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 border border-black m-auto">
                 <img className="h-10" alt="user-icon" src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
             </div>
         </div>
