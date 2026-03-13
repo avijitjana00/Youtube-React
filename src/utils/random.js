@@ -29,3 +29,11 @@ const generate = require('meaningful-string');
 
 // Generate a random, pronounceable string
 export const meaningfulString = generate.random();
+
+export function fact(n) {
+    let res = 1;
+    for (let i = 1; i <= n; i++) {
+        res *= i;
+    }
+    return res;
+}

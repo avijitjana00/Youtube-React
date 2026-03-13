@@ -56,7 +56,7 @@ const Header = ()=>{
                     <button className="border border-gray-400 p-2 rounded-r-full bg-slate-100">🔍</button>
                 </div>
                 {showSuggestions && 
-                    <div className="absolute bg-white w-[23rem] shadow-lg rounded-lg mt-2 bg-gray-100">
+                    <div className="absolute w-[23rem] shadow-lg rounded-lg mt-2 bg-gray-100">
                         <ul>
                             {suggestions.map(sug=><li key={sug} className="py-1 shadow-sm px-2 hover:bg-gray-100">🔍{sug}</li>)}
                         </ul>
